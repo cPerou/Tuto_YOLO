@@ -1,0 +1,7 @@
+path: '/content/gdrive/MyDrive/Fac/Stage_M1/Camera_trap/data'
+train: images/train
+val: images/val
+
+#classes
+names: 
+ 0: lynx

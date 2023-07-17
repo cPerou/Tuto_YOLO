@@ -1,0 +1,7 @@
+path: 'C:\M1\stage\Camera_trap\lynx_entrainement'
+train: images\train
+val: images\val
+
+#classes
+names: 
+ 0: lynx
