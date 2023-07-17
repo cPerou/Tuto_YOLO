@@ -6,7 +6,7 @@ date: "2023-07-17"
 
 engine: knitr
 
-## Introduction à YOLOv8
+### Introduction à YOLOv8
 
 **Ultralytics** a plusieurs projet dont YOLO (You Only Look Once)\
 YOLOv8 détecte des objets à partir d'images, les segmente, estime leur attitude et classer les images.
@@ -23,19 +23,19 @@ YOLOv8 repose sur le machine learning,
 
 #### Langage utilisé pour coder YOLO ?
 
-2 langages possibles :\
-- Python : Jupiter, Google Colaboratory\
+2 langages possibles :
+- Python : Jupiter, Google Colaboratory
 - CLI (invite de commandes)
 
 Google Colaboratory permet d'utiliser un GPU si notre ordinateur n'en possède pas (traitement du modèle plus rapide).
 
-## Prérequis
+### Prérequis
 
 #### Les images
 
-Recommendation :\
-- 1 500 images par catégorie\
-- Maximum de situation différente (jour, nuit, de dos...)\
+Recommendation :
+- 1 500 images par catégorie
+- Maximum de situation différente (jour, nuit, de dos...)
 - Hauteur de 640 pixels (si ce n'est pas le cas le modèle les transforme automatiquement et l'indique avec des warning)
 
 Redimensionner une grande quantité d'images :
@@ -67,7 +67,7 @@ Il y a également des sites avec des bounding box déjà faites : <https://stora
 
 #### Dans notre exemple il y a seulement 1 catégorie : lynx
 
-![](C:/M1/stage/Camera_trap/Présentation_YOLO/YOLO_detection/Boundiing_box_editor_3.jpeg)
+![Boundiing_box_editor_3](https://github.com/cPerou/Tuto_YOLO/assets/137327551/c46d792c-7627-4056-bac1-49709a84f4ca)
 
 Exporter les bounding box au format YOLO = les fichiers labels.
 
@@ -75,7 +75,7 @@ Ce label contient 2 lynx, 2 lignes.\
 Format : Numéro de la catégorie; Position x du centre de la boite; Position y du centre; Hauteur; Largeur\
 Les coordonnées sont normalisées, tant qu'on ne modifie pas le rapport hauteur/largeur de l'image, les bounding box seront corrects.
 
-![](C:/M1/stage/Camera_trap/Présentation_YOLO/YOLO_detection/Labels.jpg)
+![Labels](https://github.com/cPerou/Tuto_YOLO/assets/137327551/e6bbf7c6-0e08-4299-9422-1b3098a8994f)
 
 #### Organiser ses fichiers
 
@@ -91,7 +91,7 @@ Plus d'informations : <https://docs.ultralytics.com/datasets/detect/>
 
 <https://docs.ultralytics.com/quickstart>
 
-## Entrainer un modèle YOLO (Train)
+### Entrainer un modèle YOLO (Train)
 
 Vérifier que le script fonctionne avec peu d'images et 1 époque dans un premier temps car le temps d'entrainement est très long (34h pour 50 époques sur mon ordinateur).
 
@@ -117,14 +117,15 @@ Script type : <https://colab.research.google.com/drive/1lV1ZKvf--I-8Glg-DGBuocyJ
 
 Plus d'informations sur l'entrainement du modèle : <https://docs.ultralytics.com/modes/train/>
 
-## Valider le modèle (Val)
+### Valider le modèle (Val)
 
 Afin de savoir si notre modèle est bien entrainé, on analyse les fichiers.\
 Sans oublier que les données de validations dépendent des images de validation.
 
 #### Choses à regarder
 
-![](C:/M1/stage/Camera_trap/Présentation_YOLO/YOLO_detection/results.png) - Fonction de perte, liée au processus d'apprentissage (les 6 plots de gauches ...loss).\
+![results](https://github.com/cPerou/Tuto_YOLO/assets/137327551/4b1b12d1-7384-4eae-a830-1d1a67ae0403) 
+- Fonction de perte, liée au processus d'apprentissage (les 6 plots de gauches ...loss).\
 La valeur doit diminuer, si elle atteint un plateau c'est que le modèle n'apprend plus, le processus d'apprentissage est au maximum.\
 - Intersection d'une union (IoU) pas avec YOLO = précision de détection = intersection des surfaces entre bounding box d'entrainement et de validation - Précision moyenne principale (mAP) = prend en compte IoU et indice de confiance\
 
@@ -138,7 +139,7 @@ La valeur doit diminuer, si elle atteint un plateau c'est que le modèle n'appre
 
 Plus d'informations : <https://docs.ultralytics.com/yolov5/tutorials/tips_for_best_training_results>
 
-## Utiliser le modèle entrainé (Predict)
+### Utiliser le modèle entrainé (Predict)
 
 #### Google colab
 
@@ -150,7 +151,7 @@ Permet d'utiliser YOLO sans l'avoir installé sur son ordinateur.
 
 Choisir sa valeur de confiance
 
-## Autres fonctionnalités de YOLO
+### Autres fonctionnalités de YOLO
 
 Segmentation
 
@@ -158,7 +159,7 @@ Classification
 
 Pose --\> Analyse la posture des objets, peut donc localiser et suivre sur une vidéo les oreilles, bouches, patte antérieure gauche...
 
-## Tips
+### Tips
 
 Les deux pages web à retenir : <https://github.com/ultralytics/ultralytics> <https://docs.ultralytics.com/>
 
