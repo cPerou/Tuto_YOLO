@@ -7,6 +7,7 @@ YOLOv8 repose sur le machine learning
 Nous allons utiliser la détection d'image, elle permet de compter et localiser les objets d'une image.
 
 ![banner-tasks](https://github.com/cPerou/Tuto_YOLO/assets/137327551/889c9dde-a651-4293-ae9a-e6eaef94f6d0)
+Crédit image : Ultralytics
 
 Plus d'informations sur YOLO :
 <https://github.com/ultralytics/ultralytics>
@@ -64,17 +65,17 @@ Il y a également des sites avec des bounding box déjà faites :
 <https://storage.googleapis.com/openimages/web/visualizer/index.html?type=detection&set=train&c=%2Fm%2F02jvh9>
 (Vérifier la qualité des Bounding box)
 
-#### Dans notre exemple il y a seulement 1 catégorie : lynx
+#### Exemple
 
 ![Boundiing_box_editor_3](https://github.com/cPerou/Tuto_YOLO/assets/137327551/c46d792c-7627-4056-bac1-49709a84f4ca)
 
-Exporter les bounding box au format YOLO = les fichiers labels.
+Exporter les bounding box au format YOLO = fichiers labels
 
-Ce label contient 2 lynx, 2 lignes.
+Ce label contient 2lignes donc 2 lynx.
 Format YOLO : Numéro de la catégorie; Position x du centre de la boite;
 Position y du centre; Hauteur; Largeur
-Les coordonnées sont normalisées, tant qu'on ne modifie pas le rapport
-hauteur/largeur de l'image, les bounding box seront corrects.
+Les coordonnées sont normalisées, ce qui permet d'utiliser les mêmes bounding box tant que le rapport
+hauteur/largeur est concervé.
 
 ![Labels](https://github.com/cPerou/Tuto_YOLO/assets/137327551/e6bbf7c6-0e08-4299-9422-1b3098a8994f)
 
@@ -96,12 +97,9 @@ Plus d'informations : <https://docs.ultralytics.com/datasets/detect/>
 
 ### Entrainer un modèle YOLO (Train)
 
-Vérifier que le script fonctionne avec peu d'images et 1 époque dans un
-premier temps car le temps d'entrainement est très long (34h pour 50
-époques sur mon ordinateur).
+Tester le script avec peu d'images et 1 époque dans un
+premier temps car le temps d'entrainement est très long.
 
-Afin d'obtenir un bon modèle, 10 000 époques par catégorie (classe) sont
-recommandées.
 Une époque correspond à un modèle avec certains paramètres, les
 paramètres sont ajustés à chaque époque.
 
@@ -138,20 +136,16 @@ fichiers.
 gauche ...loss).
 La valeur doit diminuer, si elle atteint un plateau c'est que le modèle
 n'apprend plus, le processus d'apprentissage est au maximum.
-- Intersection d'une union (IoU) pas avec YOLO = précision de détection
-= intersection des surfaces entre bounding box d'entrainement et de
-validation - Précision moyenne principale (mAP) = prend en compte IoU et
+- Intersection d'une union (IoU) = précision de détection (pas visible avec YOLO)
+- Précision moyenne principale (mAP) = prend en compte IoU et
 indice de confiance
 - Regarder directement les détections
 ![val_batch0_pred](https://github.com/cPerou/Tuto_YOLO/assets/137327551/aca582ee-b5bc-47b3-95fb-d2f5719e918f)
 
 #### Comment améliorer le modèle si les résultats ne sont pas suffisants ?
 
--   0 à 10% d'images d'arrière-plan (vide ou avec d'autres animaux),
-    sans associer de bounding box,
-    cela réduit les faux positifs
--   Augmenter le nombre d'itérations (10 000 instances / classes
-    recommandées)
+-   0 à 10% d'images d'arrière-plan permetent de réduire les faux positifs (vide ou avec d'autres animaux, sans associer de bounding box)
+-   Augmenter le nombre d'itérations (recommandation de 10 000 instances / classes)
 -   1 500 images par classe
 -   70% d'images train, 20 % val, 10% test
 
@@ -163,7 +157,7 @@ Plus d'informations :
 #### Google colab
 
 Script type :
-<https://colab.research.google.com/drive/1zSByRGUnjLQltHIYk39rZ3i_Gab3JTUZ>
+[https://colab.research.google.com/drive/1zSByRGUnjLQltHIYk39rZ3i_Gab3JTUZ](https://colab.research.google.com/drive/1zSByRGUnjLQltHIYk39rZ3i_Gab3JTUZ)
 
 Permet d'utiliser YOLO sans l'avoir installé sur son ordinateur.
 
@@ -190,3 +184,5 @@ Visualiser, comparer et optimiser ses modèles avec Comet gratuitement.
 Neural Magic's DeepSparse permetrai d'acceler les run avec le même
 ordinateur
 <https://docs.ultralytics.com/yolov5/tutorials/neural_magic_pruning_quantization/>
+
+Tutoriel YOLO sur YouTube : détection, classification, segmentation, pose <https://www.youtube.com/watch?v=Z-65nqxUdl4&t=2972s>
