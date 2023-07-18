@@ -1,4 +1,4 @@
-### Modifier les images avec imagemagick dans invite de commandes de Windows ###
+### Modifier les images avec imagemagick dans l'invite de commandes de Windows ###
 
 #Le logiciel
 #https://imagemagick.org/
@@ -15,29 +15,8 @@
 #Aller dans le dossier avec les images à redimensionner
 cd C:\M1\stage\Camera_trap\lynx_entrainement\images3312px
 
-#Avec mogrify modifier la hauteur de toutes les images du dossier 
-magick mogrify -resize x640 *.jpg
+#Avec mogrify modifier la dimension de toutes les images du dossier 
+magick mogrify -resize 853x640 *.jpg
 
 #Avec mogrify modifier et enregistrer les images dans un autre dossier
-magick mogrify -resize x640 -path C:\M1\stage\Camera_trap\lynx_entrainement\images *.jpg
-
-
-##  Quand les images ont des dimensions différentes ##
-
-$sourcePath = "C:\M1\stage\Camera_trap\lynx_entrainement\images"
-$destinationPath = "C:\M1\stage\Camera_trap\lynx_entrainement\images640"
-
-# Parcours des fichiers JPG dans le répertoire source
-Get-ChildItem -Path $sourcePath -Filter "*.jpg" | ForEach-Object {
-    $image = $_.FullName
-    $dimensions = (magick identify -format "%w %h" $image).Split(" ")
-
-    # Vérification des dimensions de l'image
-    if ($dimensions[0] -eq "4416" -and $dimensions[1] -eq "3312") {
-        # Redimensionnement de l'image
-        magick convert $image -resize x640 $destinationPath\$_
-    } else {
-        # Copie de l'image sans redimensionnement
-        Copy-Item $image $destinationPath
-    }
-}
+magick mogrify -resize 853x640 -path C:\M1\stage\Camera_trap\lynx_entrainement\images *.jpg
