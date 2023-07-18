@@ -10,8 +10,6 @@
 #https://www.youtube.com/watch?v=BdeWDub3hGI
 
 
-## Quand les images ont toutes la même dimension ##
-
 #Aller dans le dossier avec les images à redimensionner
 cd C:\M1\stage\Camera_trap\lynx_entrainement\images3312px
 
