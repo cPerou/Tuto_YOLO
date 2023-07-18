@@ -7,6 +7,7 @@ YOLOv8 repose sur le machine learning
 Nous allons utiliser la détection d'image, elle permet de compter et localiser les objets d'une image.
 
 ![banner-tasks](https://github.com/cPerou/Tuto_YOLO/assets/137327551/889c9dde-a651-4293-ae9a-e6eaef94f6d0)
+Crédit image : Ultralytics
 
 Plus d'informations sur YOLO :
 <https://github.com/ultralytics/ultralytics>
@@ -138,9 +139,8 @@ fichiers.
 gauche ...loss).
 La valeur doit diminuer, si elle atteint un plateau c'est que le modèle
 n'apprend plus, le processus d'apprentissage est au maximum.
-- Intersection d'une union (IoU) pas avec YOLO = précision de détection
-= intersection des surfaces entre bounding box d'entrainement et de
-validation - Précision moyenne principale (mAP) = prend en compte IoU et
+- Intersection d'une union (IoU) = précision de détection (pas visible avec YOLO)
+- Précision moyenne principale (mAP) = prend en compte IoU et
 indice de confiance
 - Regarder directement les détections
 ![val_batch0_pred](https://github.com/cPerou/Tuto_YOLO/assets/137327551/aca582ee-b5bc-47b3-95fb-d2f5719e918f)
@@ -163,7 +163,7 @@ Plus d'informations :
 #### Google colab
 
 Script type :
-<https://colab.research.google.com/drive/1zSByRGUnjLQltHIYk39rZ3i_Gab3JTUZ>
+[https://colab.research.google.com/drive/1zSByRGUnjLQltHIYk39rZ3i_Gab3JTUZ](https://colab.research.google.com/drive/1zSByRGUnjLQltHIYk39rZ3i_Gab3JTUZ)
 
 Permet d'utiliser YOLO sans l'avoir installé sur son ordinateur.
 
