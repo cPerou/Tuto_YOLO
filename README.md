@@ -1,42 +1,33 @@
----
-title: "README"
-output: html_document
-date: "2023-07-17"
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 ### Introduction à YOLOv8
 
 **Ultralytics** a plusieurs projet dont YOLO (You Only Look Once)
 
-YOLOv8 repose sur le machine learning\
-YOLOv8 détecte des objets à partir d'images, les segmente, estime leur
-attitude, les suit et classe les images.
+YOLOv8 repose sur le machine learning
 
-Nous allons utiliser la détection d'image, elle permet de compter et
-localiser les objets d'une image.
+Nous allons utiliser la détection d'image, elle permet de compter et localiser les objets d'une image.
 
-![banner-tasks]()
+![banner-tasks](https://github.com/cPerou/Tuto_YOLO/assets/137327551/889c9dde-a651-4293-ae9a-e6eaef94f6d0)
 
 Plus d'informations sur YOLO :
 <https://github.com/ultralytics/ultralytics>
 
 #### Langage utilisé pour coder YOLO ?
 
-2 langages possibles : - Python : Jupiter, Thonny, Google Colaboratory -
-CLI (invite de commandes)
+2 langages possibles : 
+- Python : Jupiter, Thonny, Google Colaboratory
+- CLI (invite de commandes)
 
-Google Colaboratory permet d'utiliser un GPU si notre ordinateur n'en
-possède pas (traitement du modèle plus rapide).
+Google Colaboratory permet d'utiliser un GPU si notre ordinateur n'en possède pas (traitement du modèle plus rapide).
 
 ### Prérequis
 
 #### Les images
 
-Recommendation : - 1 500 images par catégorie - Maximum de situation
-différente (jour, nuit, de dos...) - Hauteur de 640 pixels (si ce n'est
+Recommendation : 
+- 1 500 images par catégorie
+- Maximum de situation
+différente (jour, nuit, de dos...)
+- Hauteur de 640 pixels (si ce n'est
 pas le cas le modèle les transforme automatiquement et l'indique avec
 des warning)
 
@@ -65,9 +56,9 @@ bounding box. Elles doivent entourer l'objet de plus précisément
 possible et ne pas en oublier.
 
 J'ai utilisé l'application BoundingBoxEditor
-<https://github.com/mfl28/BoundingBoxEditor>.\
+<https://github.com/mfl28/BoundingBoxEditor>.
 
-Il existe le site <https://www.cvat.ai/>.\
+Il existe le site <https://www.cvat.ai/>.
 
 Il y a également des sites avec des bounding box déjà faites :
 <https://storage.googleapis.com/openimages/web/visualizer/index.html?type=detection&set=train&c=%2Fm%2F02jvh9>
@@ -79,9 +70,9 @@ Il y a également des sites avec des bounding box déjà faites :
 
 Exporter les bounding box au format YOLO = les fichiers labels.
 
-Ce label contient 2 lynx, 2 lignes.\
+Ce label contient 2 lynx, 2 lignes.
 Format YOLO : Numéro de la catégorie; Position x du centre de la boite;
-Position y du centre; Hauteur; Largeur\
+Position y du centre; Hauteur; Largeur
 Les coordonnées sont normalisées, tant qu'on ne modifie pas le rapport
 hauteur/largeur de l'image, les bounding box seront corrects.
 
@@ -89,7 +80,7 @@ hauteur/largeur de l'image, les bounding box seront corrects.
 
 #### Organiser ses fichiers
 
-![fichiersOrganisation]()
+![fichierOrganisation](https://github.com/cPerou/Tuto_YOLO/assets/137327551/78898fe1-e5c5-4197-b8a5-ae35d4bc15e6)
 
 Important de respecter les noms des fichiers : images, labels, train,
 val, (test).
@@ -110,7 +101,7 @@ premier temps car le temps d'entrainement est très long (34h pour 50
 époques sur mon ordinateur).
 
 Afin d'obtenir un bon modèle, 10 000 époques par catégorie (classe) sont
-recommandées.\
+recommandées.
 Une époque correspond à un modèle avec certains paramètres, les
 paramètres sont ajustés à chaque époque.
 
@@ -142,25 +133,26 @@ fichiers.
 
 #### Choses à regarder
 
-![results](https://github.com/cPerou/Tuto_YOLO/assets/137327551/4b1b12d1-7384-4eae-a830-1d1a67ae0403) -
-Fonction de perte, liée au processus d'apprentissage (les 6 plots de
-gauche ...loss).\
+![results](https://github.com/cPerou/Tuto_YOLO/assets/137327551/4b1b12d1-7384-4eae-a830-1d1a67ae0403) 
+- Fonction de perte, liée au processus d'apprentissage (les 6 plots de
+gauche ...loss).
 La valeur doit diminuer, si elle atteint un plateau c'est que le modèle
-n'apprend plus, le processus d'apprentissage est au maximum.\
+n'apprend plus, le processus d'apprentissage est au maximum.
 - Intersection d'une union (IoU) pas avec YOLO = précision de détection
 = intersection des surfaces entre bounding box d'entrainement et de
 validation - Précision moyenne principale (mAP) = prend en compte IoU et
-indice de confiance\
-- Regarder directement les détections ![val_batch0_pred]()
+indice de confiance
+- Regarder directement les détections
+![val_batch0_pred](https://github.com/cPerou/Tuto_YOLO/assets/137327551/aca582ee-b5bc-47b3-95fb-d2f5719e918f)
 
 #### Comment améliorer le modèle si les résultats ne sont pas suffisants ?
 
 -   0 à 10% d'images d'arrière-plan (vide ou avec d'autres animaux),
-    sans associer de bounding box,\
-    cela réduit les faux positifs\
+    sans associer de bounding box,
+    cela réduit les faux positifs
 -   Augmenter le nombre d'itérations (10 000 instances / classes
-    recommandées)\
--   1 500 images par classe\
+    recommandées)
+-   1 500 images par classe
 -   70% d'images train, 20 % val, 10% test
 
 Plus d'informations :
@@ -176,6 +168,8 @@ Script type :
 Permet d'utiliser YOLO sans l'avoir installé sur son ordinateur.
 
 #### Local (Jupiter / Thonny)
+
+En cours
 
 ### Tips
 
