@@ -2,7 +2,7 @@
 
 **Ultralytics** a plusieurs projet dont YOLO (You Only Look Once)
 
-YOLOv8 repose sur le machine learning\
+YOLOv8 repose sur le machine learning
 
 Nous allons utiliser la détection d'image, elle permet de compter et localiser les objets d'une image.
 
