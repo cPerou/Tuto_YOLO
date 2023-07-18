@@ -1,12 +1,3 @@
----
-title: "README"
-output: html_document
-date: "2023-07-17"
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 ### Introduction à YOLOv8
 
 **Ultralytics** a plusieurs projet dont YOLO (You Only Look Once)
@@ -18,7 +9,7 @@ attitude, les suit et classe les images.
 Nous allons utiliser la détection d'image, elle permet de compter et
 localiser les objets d'une image.
 
-![banner-tasks]()
+![banner-tasks](https://github.com/cPerou/Tuto_YOLO/assets/137327551/889c9dde-a651-4293-ae9a-e6eaef94f6d0)
 
 Plus d'informations sur YOLO :
 <https://github.com/ultralytics/ultralytics>
@@ -89,7 +80,7 @@ hauteur/largeur de l'image, les bounding box seront corrects.
 
 #### Organiser ses fichiers
 
-![fichiersOrganisation]()
+![fichierOrganisation](https://github.com/cPerou/Tuto_YOLO/assets/137327551/78898fe1-e5c5-4197-b8a5-ae35d4bc15e6)
 
 Important de respecter les noms des fichiers : images, labels, train,
 val, (test).
@@ -151,7 +142,8 @@ n'apprend plus, le processus d'apprentissage est au maximum.\
 = intersection des surfaces entre bounding box d'entrainement et de
 validation - Précision moyenne principale (mAP) = prend en compte IoU et
 indice de confiance\
-- Regarder directement les détections ![val_batch0_pred]()
+- Regarder directement les détections
+![val_batch0_pred](https://github.com/cPerou/Tuto_YOLO/assets/137327551/aca582ee-b5bc-47b3-95fb-d2f5719e918f)
 
 #### Comment améliorer le modèle si les résultats ne sont pas suffisants ?
 
