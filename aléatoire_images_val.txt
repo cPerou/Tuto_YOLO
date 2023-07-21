@@ -1,0 +1,17 @@
+$dossier_source="C:\M1\stage\Camera_trap\lynx_entrainement\images\train"
+
+$dossier_destination="C:\M1\stage\Camera_trap\lynx_entrainement\images\val"
+
+# Compter le nombre d'images dans le dossier source
+$nb_images_total=(Get-ChildItem C:\M1\stage\Camera_trap\lynx_entrainement\images\train).Count
+
+# Calculer le nombre d'images à sélectionner (30%)
+$nb_images_a_selectionner=$(($nb_images_total * 30 / 100))
+
+# Déplace les fichiers images dans dossier_destination
+Get-ChildItem $dossier_source | Get-Random -Count $nb_images_a_selectionner | Move-Item -Destination $dossier_destination
+
+
+
+
+
