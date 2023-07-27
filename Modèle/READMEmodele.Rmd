@@ -1,0 +1,13 @@
+---
+title: "Infos_modele"
+output: html_document
+date: "2023-07-26"
+---
+
+## Informations sur le modèle "last.pt"
+
+- 100 époques
+- 1200 images d'entrainement (70%) : 892 photo de lynx, 308 photo vides
+- 515 images de validation (30%) : 383 photo de lynx, 132 photo vides
+- photo de jour et de nuit
+- pas de photo avec d'autres animaux

@@ -1,5 +1,8 @@
-$dossier_source="C:\M1\stage\Camera_trap\lynx_entrainement\images\train"
+# Choisir aléatoirement les images qui serviront à la validation 
+# Ce qui revient à déplacer de manière aléatoire 30% des images dans le dossier val
 
+# Définir le dossier source avec toutes les images et le dossier destination, ici "val" 
+$dossier_source="C:\M1\stage\Camera_trap\lynx_entrainement\images\train"
 $dossier_destination="C:\M1\stage\Camera_trap\lynx_entrainement\images\val"
 
 # Compter le nombre d'images dans le dossier source
@@ -8,10 +11,5 @@ $nb_images_total=(Get-ChildItem C:\M1\stage\Camera_trap\lynx_entrainement\images
 # Calculer le nombre d'images à sélectionner (30%)
 $nb_images_a_selectionner=$(($nb_images_total * 30 / 100))
 
-# Déplace les fichiers images dans dossier_destination
+# Déplacer les fichiers images dans dossier_destination
 Get-ChildItem $dossier_source | Get-Random -Count $nb_images_a_selectionner | Move-Item -Destination $dossier_destination
-
-
-
-
-

@@ -1,19 +1,21 @@
-# Dossier val avec les images 
+# Deplacer les labels correspondant aux images val
+
+# Définir le dossier avec les images val
 $dossier_info="C:\M1\stage\Camera_trap\lynx_entrainement\images\val"
 
+# Définir les dossiers "source" et "destination"
 $dossier_source="C:\M1\stage\Camera_trap\lynx_entrainement\labels\train"
-
 $dossier_destination="C:\M1\stage\Camera_trap\lynx_entrainement\labels\val"
 
-# Enregistre les noms de fichiers du dossier info sans extension dans un tableau
+# Enregistrer les noms des images du dossier info sans leur extension dans un tableau
 $tab_noms_fichiers = Get-ChildItem -Path $dossier_info -File | ForEach-Object { $_.BaseName }
 
-# Parcour les fichiers du dossier source
+# Parcourir les fichiers du dossier source
 Get-ChildItem -Path $dossier_source -File | ForEach-Object {
     $nom_fichier = $_.BaseName
-    # Vérifie si le nom du fichier existe dans le tableau des noms de fichiers
+    # Vérifier si le nom du fichier existe dans le tableau des noms de fichiers
     if ($tab_noms_fichiers -contains $nom_fichier) {
-        # Déplace le fichier vers le dossier destination
+        # Déplacer le fichier vers le dossier destination
         Move-Item -Path $_.FullName -Destination $dossier_destination
     }
 }
