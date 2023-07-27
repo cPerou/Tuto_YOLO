@@ -113,7 +113,7 @@ Script type avec un modèle vide : <https://github.com/cPerou/Tuto_YOLO/blob/878
 
 Goofle Colab permet d'utiliser YOLO sans avoir besoin de l'installer sur son ordinateur.
 
-Script qui utilise Comet et exporte le modèle :
+Script qui utilise Comet et exporte le modèle : <https://github.com/cPerou/Tuto_YOLO/blob/0d4bba773f8bbf49a4dd4f641599ea4a151fce31/Google_colaboratory/Train_Google_Comet_Export.ipynb>
 
 #### Local (Jupiter / Thonny)
 
