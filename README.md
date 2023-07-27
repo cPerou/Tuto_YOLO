@@ -111,7 +111,7 @@ Information supplémentaires sur l'utilisation des différents GPU, la reprise d
 
 Script type avec un modèle vide : <https://github.com/cPerou/Tuto_YOLO/blob/87817748182c359068d5bd12786f2d2ae274cad8/Google_colaboratory/Train_Google.ipynb>
 
-Goofle Colab permet d'utiliser YOLO sans avoir besoin de l'installer sur son ordinateur.
+Google Colab permet d'utiliser YOLO sans avoir besoin de l'installer sur son ordinateur.
 
 Script qui utilise Comet et exporte le modèle : <https://github.com/cPerou/Tuto_YOLO/blob/0d4bba773f8bbf49a4dd4f641599ea4a151fce31/Google_colaboratory/Train_Google_Comet_Export.ipynb>
 
@@ -136,13 +136,16 @@ Evaluation du modèle afin de mesurer sa précision et ses performances. On peut
 
 #### Data à analyser
 
-![results](https://github.com/cPerou/Tuto_YOLO/assets/137327551/4b1b12d1-7384-4eae-a830-1d1a67ae0403) - Fonction de loss, liée au processus d'apprentissage, calcule l'erreur entre les prédictions de ton modèle et les valeurs réelles (les 6 plots de gauche ...loss). La valeur doit diminuer et se rapprocher de 0, si elle atteint un plateau c'est que le modèle n'apprend plus, le processus d'apprentissage est au maximum. Explication des différentes fonction de loss <https://inside-machinelearning.com/fonction-de-loss/>
+![results](https://github.com/cPerou/Tuto_YOLO/assets/137327551/4b1b12d1-7384-4eae-a830-1d1a67ae0403) - Fonction de loss, liée au processus d'apprentissage, calcule l'erreur entre les prédictions de ton modèle et les valeurs réelles (les 6 plots de gauche ...loss). La valeur doit diminuer et se rapprocher de 0, si elle atteint un plateau c'est que le modèle n'apprend plus, le processus d'apprentissage est au maximum. Explication des différentes fonction de loss\
+<https://inside-machinelearning.com/fonction-de-loss/>
 
 \- Intersection d'une union (IoU) = précision de détection (pas visible avec YOLO)
 
 \- Précision moyenne principale (mAP) = prend en compte IoU et indice de confiance
 
 \- Regarder directement les détections ![val_batch0_pred](https://github.com/cPerou/Tuto_YOLO/assets/137327551/aca582ee-b5bc-47b3-95fb-d2f5719e918f)
+
+Plus d'informations sur la validation du modèle : <https://docs.ultralytics.com/modes/val/>
 
 #### Comment améliorer la précision du modèle ?
 
@@ -236,4 +239,4 @@ Réglage efficace des hyperparamètres avec Ray Tune et YOLOv8 <https://github.c
 
 Faire des cartes thermiques pour visualiser comment le modèle détecte les objets de l'image. <https://github.com/pooya-mohammadi/yolov5-gradcam/tree/master>
 
-Page YouTube d'ultralitics [https://www.youtube.com/\@Ultralytics](https://www.youtube.com/@Ultralytics)
+Page YouTube d'ultralytics [https://www.youtube.com/\@Ultralytics](https://www.youtube.com/@Ultralytics)
