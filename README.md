@@ -1,26 +1,26 @@
 ### Introduction à YOLOv8
 
-**Ultralytics** a plusieurs projet dont YOLO (You Only Look Once) qui repose sur un réseau de neurones convolutifs.
-
-Sa première version a été créée en 2015. En 2023, YOLOv8 est lancée, ce modèle est anchor-free (sans ancre).
+**Ultralytics** est une stratup qui développe et rend l'accès aux IA plus simple. \
+En 2015, elle a développé la première version de YOLO (You Only Look Once) qui détecte des objets en temps réel. \
+En 2023, une version encore plus performante est lancée : YOLOv8. 
 
 5 types de modèles sont disponibles :
 
 ![banner-tasks](https://github.com/cPerou/Tuto_YOLO/assets/137327551/889c9dde-a651-4293-ae9a-e6eaef94f6d0) Crédit image : Ultralytics
 
-Nous allons utiliser la détection d'image, elle permet de compter et localiser les objets d'une image.
+Nous allons utiliser le modèle pré-entrainé de détection d'image 'YOLOv8n'. Il permet de compter et localiser les objets d'une image. \
+Ce modèle repose sur un réseau de neurones convolutifs sans ancres, avec 225 couches et 3 157 200 paramètres. \
+Si les résultats ne sont pas assez bon, il existe des modèles avec plus de couche et de paramètres (plus long à entrainer), YOLOv8s par exemple.
 
-Afin d'entrainer un modèle de détection, 7 modes sont disponibles : Train, Val, Predict, Export, Track, Benchmark.
+Plusieurs étapes sont nécessaires pour entrainer un modèle de deep learning : Train, Val, Predict, (Export), (Track), (Benchmark).
 
-Plus d'informations sur YOLO : <https://github.com/ultralytics/ultralytics>
+#### Langages informatiques utilisés ?
 
-#### Langage utilisé pour coder YOLO ?
-
-2 langages possibles :\
-- Python : Jupyter, Thonny, Google Colaboratory\
+2 langages possibles : 
+- Python : Jupyter, Thonny, Google Colaboratory 
 - CLI (invite de commandes)
 
-Google Colaboratory permet d'utiliser YOLO sans rien installer sur son ordinateur, il met aussi à disposition un GPU.
+Google Colaboratory permet d'utiliser YOLO sans installer ultralytics sur son ordinateur, il met aussi à disposition un GPU.
 
 Si tu as déjà ton modèle entrainé, tu peux directement aller à la section **"Utiliser le modèle entrainé (Predict)"**
 
@@ -28,12 +28,12 @@ Si tu as déjà ton modèle entrainé, tu peux directement aller à la section *
 
 #### Les images
 
-Recommendation :\
-- 1 500 images par catégorie\
-- Un maximum de situations différentes (jour, nuit, de dos...)\
+Recommendations :
+- 1 500 images par catégorie
+- Un maximum de situations différentes (jour, nuit, de dos...)
 - 640 pixels en hauteur (si ce n'est pas le cas le modèle les transforme automatiquement et l'indique avec des warning)
 
-Redimensionner une grande quantité d'images :
+Comment redimensionner une grande quantité d'images :
 
 ```{cmd}
 #Installer ImageMagick <https://imagemagick.org/>
@@ -54,17 +54,18 @@ Informations complémentaires dans le script "redimentionner_images.txt".
 
 ![Boundiing_box_editor_3](https://github.com/cPerou/Tuto_YOLO/assets/137327551/c46d792c-7627-4056-bac1-49709a84f4ca)
 
+Les boites englobantes indiquent au modèle où est la réponse sur l'image. \
 Il existe de nombreux logiciels et sites qui permettent de réaliser des bounding box. Celles-ci doivent entourer l'objet le plus précisément possible.
 
 J'ai utilisé l'application BoundingBoxEditor <https://github.com/mfl28/BoundingBoxEditor>.
 
-Il existe le site <https://www.cvat.ai/>.
+Il existe le site <https://www.cvat.ai/> pour réaliser des bounding box en ligne.
 
-Des **banques de données** avec des bounding box déjà faites sont disponibles :\
-- [https://storage.googleapis.com/openimages/web/visualizer/index.html?type=detection&set=train&c=%2Fm%2F02jvh9](#0){.uri}\
-- <https://www.objects365.org/explore.html>\
-- <https://github.com/eg4000/SKU110K_CVPR19>\
-- Images satellites\
+Des **banques de données** avec des bounding box déjà faites sont disponibles :
+- <https://storage.googleapis.com/openimages/web/visualizer/index.html?type=detection&set=train&c=%2Fm%2F02jvh9>
+- <https://www.objects365.org/explore.html>
+- <https://github.com/eg4000/SKU110K_CVPR19>
+- Images satellites
 <https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/datasets/xView.yaml>\
 <http://xviewdataset.org/>
 
@@ -80,11 +81,11 @@ Les coordonnées sont normalisées, ce qui permet d'utiliser les mêmes bounding
 
 ![fichierOrganisation](https://github.com/cPerou/Tuto_YOLO/assets/137327551/78898fe1-e5c5-4197-b8a5-ae35d4bc15e6)
 
-Important de respecter les noms des fichiers : images, labels, train, val, (test).
+Il est important de respecter les noms des fichiers : images, labels, train, val, (test).
 
 Les bounding box sont dans le dossier "labels" (Les bounding box ont le même nom que leur image correspondante)
 
-Mettre aléatoirement 70% des images dans train et les 30% restant dans val.\
+Mettre aléatoirement 70% des images dans train et les 30% restant dans val (val pour validation).\
 Une méthode est détaillée dans les scripts "aléatoire_images_val.txt" et "deplacer_labels_val.txt".
 
 Plus d'informations sur les data : <https://docs.ultralytics.com/datasets/detect/>
@@ -95,13 +96,13 @@ Plus d'informations sur les data : <https://docs.ultralytics.com/datasets/detect
 
 ### Entrainer un modèle YOLO (Train)
 
-On peut utiliser un modèle vide ou un modèle déjà pré-entrainé.
+On peut utiliser un modèle vide (seulement la structure du modèle est déjà faite) ou un modèle pré-entrainé sur d'autres données.
 
-Une **époque** correspond à un modèle avec certains paramètres, les paramètres sont ajustés à chaque époque (machine learning) afin de trouver le meilleur modèle.
+Une **époque** correspond à l'essai d'un modèle avec certains paramètres. Les paramètres sont ajustés à chaque époque (Machine learning) afin de trouver le meilleur modèle.
 
 Le fichier **"data.yaml"** indique le chemin des images train et val ainsi que le nombre et les noms des classes.
 
-Dans un premier temps, tester le script avec peu d'images et 1 époque car le temps d'entrainement est très long.
+Dans un premier temps, tester le script avec peu d'images et 1 époque afin de minimiser les erreurs possibles.
 
 On peut enregistrer les performances du modèle pendant l'entrainement avec Comet, ClearML ou TensorBoard.
 
@@ -109,9 +110,9 @@ Information supplémentaires sur l'utilisation des différents GPU, la reprise d
 
 #### Google Colaboratory
 
-Script type avec un modèle vide : <https://github.com/cPerou/Tuto_YOLO/blob/87817748182c359068d5bd12786f2d2ae274cad8/Google_colaboratory/Train_Google.ipynb>
+Google Colab permet d'utiliser YOLO sans l'avoir installé sur son ordinateur.
 
-Google Colab permet d'utiliser YOLO sans avoir besoin de l'installer sur son ordinateur.
+Script type qui commence avec un modèle vide : <https://github.com/cPerou/Tuto_YOLO/blob/87817748182c359068d5bd12786f2d2ae274cad8/Google_colaboratory/Train_Google.ipynb>
 
 Script qui utilise Comet et exporte le modèle : <https://github.com/cPerou/Tuto_YOLO/blob/0d4bba773f8bbf49a4dd4f641599ea4a151fce31/Google_colaboratory/Train_Google_Comet_Export.ipynb>
 
@@ -121,35 +122,35 @@ Script qui utilise Comet et exporte le modèle : <https://github.com/cPerou/Tuto
 from ultralytics import YOLO
 
 # Charge le modèle à entrainer 
-#(c'est le modèle nano : taille = 3 millions de paramètres, rapidité = 1ms/image)
+# (Modèle nano : taille = 3 millions de paramètres, rapidité = 1ms/image)
 model = YOLO("yolov8n.yaml")
 
 # Entraine le modèle avec une époque
 results = model.train(data="C:/M1/stage/Camera_trap/lynx_entrainement/dataLocal.yaml", epochs=1)  
 ```
 
-Plus d'informations sur l'entrainement du modèle (coder en CLI) : <https://docs.ultralytics.com/modes/train/>
+Plus d'informations sur l'entrainement du modèle (codé en CLI) : <https://docs.ultralytics.com/modes/train/>
 
 ### Valider le modèle (Val)
 
-Evaluation du modèle afin de mesurer sa précision et ses performances. On peut utiliser ce mode pour ajuster les hyperparamètres et améliorer les performances du modèle.
+Evaluation du modèle afin de mesurer sa précision et ses performances. \
+On peut utiliser le mode val pour ajuster les hyperparamètres et améliorer les performances du modèle.
 
 #### Data à analyser
 
-![results](https://github.com/cPerou/Tuto_YOLO/assets/137327551/4b1b12d1-7384-4eae-a830-1d1a67ae0403) - Fonction de loss, liée au processus d'apprentissage, calcule l'erreur entre les prédictions de ton modèle et les valeurs réelles (les 6 plots de gauche ...loss). La valeur doit diminuer et se rapprocher de 0, si elle atteint un plateau c'est que le modèle n'apprend plus, le processus d'apprentissage est au maximum. Explication des différentes fonction de loss\
+![results](https://github.com/cPerou/Tuto_YOLO/assets/137327551/4b1b12d1-7384-4eae-a830-1d1a67ae0403) 
+- Fonction de loss, liée au processus d'apprentissage, calcule l'erreur entre les prédictions de ton modèle et les valeurs réelles (les 6 plots de gauche ...loss). La valeur doit diminuer et se rapprocher de 0, si elle atteint un plateau c'est que le modèle n'apprend plus, le processus d'apprentissage est au maximum. Explication des différentes fonction de loss\
 <https://inside-machinelearning.com/fonction-de-loss/>
-
-\- Intersection d'une union (IoU) = précision de détection (pas visible avec YOLO)
-
-\- Précision moyenne principale (mAP) = prend en compte IoU et indice de confiance
-
-\- Regarder directement les détections ![val_batch0_pred](https://github.com/cPerou/Tuto_YOLO/assets/137327551/aca582ee-b5bc-47b3-95fb-d2f5719e918f)
+- Matrice de confusion
+- Intersection d'une union (IoU) = précision de détection (pas visible avec YOLO)
+- Précision moyenne principale (mAP) = prend en compte IoU et indice de confiance
+- Regarder directement les détections ![val_batch0_pred](https://github.com/cPerou/Tuto_YOLO/assets/137327551/aca582ee-b5bc-47b3-95fb-d2f5719e918f)
 
 Plus d'informations sur la validation du modèle : <https://docs.ultralytics.com/modes/val/>
 
 #### Comment améliorer la précision du modèle ?
 
--   0 à 10% d'images d'arrière-plan permetent de réduire les faux positifs (vide ou avec d'autres animaux, sans associer de bounding box)
+-   0 à 10% d'images d'arrière-plan permetent de réduire les faux positifs (image d'arrière-plan : paysage ou avec d'autres animaux, sans associer de bounding box)
 -   Augmenter le nombre d'itérations (recommandation de 10 000 instances / classes)
 -   1 500 images par classe
 -   70% d'images train, 20 % val, 10% test
@@ -162,19 +163,19 @@ Plus d'informations pour améliorer son modèle : <https://docs.ultralytics.com/
 
 ### Utiliser le modèle entrainé (Predict)
 
-YOLO peut être utilisé sur :\
-- des images .bpm .dng .jpeg .jpg .mpo .png .tif .tiff .webp .pfm\
-- des vidéos .asf .avi .gif .m4v .mkv .mov .mp4 .mpeg .mpg .ts .wmv .webm\
-- des fichiers .csv contenant des path\
+YOLO peut être utilisé sur :
+- des images .bpm .dng .jpeg .jpg .mpo .png .tif .tiff .webp .pfm
+- des vidéos .asf .avi .gif .m4v .mkv .mov .mp4 .mpeg .mpg .ts .wmv .webm
+- des fichiers .csv contenant des path
 - des vidéos youtube...
 
 Plus d'informations sur les fichiers input et les résultats : <https://github.com/ultralytics/ultralytics/blob/main/docs/modes/predict.md>
 
 #### Google colab
 
-Script type : <https://github.com/cPerou/Tuto_YOLO/blob/87817748182c359068d5bd12786f2d2ae274cad8/Google_colaboratory/Predict_Google.ipynb>
+Google Colab permet d'utiliser YOLO sans l'avoir installé sur son ordinateur.
 
-Permet d'utiliser YOLO sans l'avoir installé sur son ordinateur.
+Script type : <https://github.com/cPerou/Tuto_YOLO/blob/87817748182c359068d5bd12786f2d2ae274cad8/Google_colaboratory/Predict_Google.ipynb>
 
 #### Local (Jupiter / Thonny)
 
@@ -182,7 +183,7 @@ En cours
 
 ### Exporter le modèle
 
-Je peux exporter le modèle YOLOv8 sous un autre format (ONNX, OpenVINO, TensorRT). Cet autre format permet le déploiement du modèle dans d'autres applications.
+On peut exporter notre modèle YOLOv8 sous d'autres formats (ONNX, OpenVINO, TensorRT). Cet autre format permet le déploiement du modèle dans d'autres applications.
 
 ```{cmd}
 
